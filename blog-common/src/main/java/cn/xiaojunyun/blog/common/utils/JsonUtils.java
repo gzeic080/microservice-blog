@@ -17,7 +17,7 @@ import java.util.Map;
  * @date 2018-8-3 14:40
  */
 public class JsonUtils {
-    private static final Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    private static final Gson GOSON=new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
     private static JsonParser jsonParser=new JsonParser();
 
     /**
@@ -26,7 +26,7 @@ public class JsonUtils {
      * @return
      */
     public static String toJsonString(Object data){
-        return data!=null?gson.toJson(data):"";
+        return data!=null?GOSON.toJson(data):"";
     }
 
     /**
@@ -37,7 +37,7 @@ public class JsonUtils {
      * @return
      */
     public static <T> T fromJSON(String data, Class<T> type) {
-        return StringUtils.isNoneEmpty(data)&& type != null? gson.fromJson(data.replaceAll("[\n\r\t]", ""), type) : null;
+        return StringUtils.isNoneEmpty(data)&& type != null? GOSON.fromJson(data.replaceAll("[\n\r\t]", ""), type) : null;
     }
 
     /**
@@ -48,7 +48,7 @@ public class JsonUtils {
      * @return
      */
     public static <T> List<T> toList(String data,Class<T> type ){
-        return StringUtils.isNoneEmpty(data) && type!=null?(List<T>) gson.fromJson(data,new TypeToken<List<T>>(){}.getType()):null;
+        return StringUtils.isNoneEmpty(data) && type!=null?(List<T>) GOSON.fromJson(data,new TypeToken<List<T>>(){}.getType()):null;
 
     }
 
@@ -61,7 +61,7 @@ public class JsonUtils {
      */
     public static <T,V>Map<T,V> toMap(String data){
 
-        return StringUtils.isNoneEmpty(data)?(Map<T, V>) gson.fromJson(data,new TypeToken<Map<T,V>>(){}.getType()):null;
+        return StringUtils.isNoneEmpty(data)?(Map<T, V>) GOSON.fromJson(data,new TypeToken<Map<T,V>>(){}.getType()):null;
     }
 
 
