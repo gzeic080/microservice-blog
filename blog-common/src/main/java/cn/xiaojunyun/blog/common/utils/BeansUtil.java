@@ -17,7 +17,7 @@ public class BeansUtil{
 
     public static Map<String,Object> voToMap(Object object)throws Exception{
         if (object==null){return null;}
-        Map<String,Object> resultMap=new HashMap<String, Object>();
+        Map<String,Object> resultMap=new HashMap<String, Object>(50);
         BeanInfo beanInfo =Introspector.getBeanInfo(object.getClass());
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
         for (PropertyDescriptor property : propertyDescriptors) {
