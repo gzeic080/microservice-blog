@@ -18,7 +18,6 @@ import java.util.Map;
  */
 public class JsonUtils {
     private static final Gson GOSON=new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-    private static JsonParser jsonParser=new JsonParser();
 
     /**
      * 将Object转换成Json字符串
@@ -63,15 +62,4 @@ public class JsonUtils {
 
         return StringUtils.isNoneEmpty(data)?(Map<T, V>) GOSON.fromJson(data,new TypeToken<Map<T,V>>(){}.getType()):null;
     }
-
-
-   /* public static void main(String[] args) {
-        Map<String,Object> map=new HashMap<String, Object>();
-        map.put("name","张三");
-        map.put("age",19);
-        String s=JsonUtils.toJsonString(map);
-
-        System.out.println(s);
-        System.out.println(JsonUtils.toMap(s));
-    }*/
 }
