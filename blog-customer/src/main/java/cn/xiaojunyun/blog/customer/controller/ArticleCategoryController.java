@@ -5,6 +5,7 @@ import cn.xiaojunyun.blog.api.service.ArticleCategoryService;
 import cn.xiaojunyun.blog.common.message.TradeMessages;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * @date 2018-8-28 9:54
  */
 @RestController
+@RequestMapping("/articleCategory")
 public class ArticleCategoryController {
 
     @Reference(version = "${service.version}",
@@ -24,7 +26,7 @@ public class ArticleCategoryController {
     )
     private ArticleCategoryService articleCategoryService;
 
-    @GetMapping("/articleCategory/queryArticleCategory")
+    @GetMapping("/queryArticleCategory")
     public TradeMessages<List<ArticleCategory>> queryArticleCategory(){
         TradeMessages<List<ArticleCategory>> messages=new TradeMessages<>();
         List<ArticleCategory> categoryList=articleCategoryService.queryArticleCategory();
